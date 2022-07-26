@@ -5,7 +5,9 @@
  */
 #ifndef __OPEN_GL_H__
 #define __OPEN_GL_H__
-#include "config.h"
+//#include "config.h"
+
+#define GL_WITH_GLAD 1
 
 #if defined(GL_WITH_GLAD)
 #   include <glad/glad.h>

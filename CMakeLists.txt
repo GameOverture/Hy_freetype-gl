@@ -23,7 +23,7 @@ add_definitions("-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE}")
 message(STATUS "Building for ${CMAKE_SYSTEM_NAME} target system")
 message(STATUS "Building with ${CMAKE_C_COMPILER_ID} compiler")
 
-set(freetype-gl_WITH_GLEW_DEFAULT ON)
+set(freetype-gl_WITH_GLEW_DEFAULT OFF)
 
 if((${CMAKE_SYSTEM_NAME} MATCHES "Darwin") OR
     (${CMAKE_SYSTEM_NAME} MATCHES "Android"))
@@ -33,13 +33,13 @@ endif()
 option(freetype-gl_WITH_GLEW
     "Use the GLEW library to fetch OpenGL function pointers"
     ${freetype-gl_WITH_GLEW_DEFAULT})
-option(freetype-gl_WITH_GLAD "Use the GLAD gl loader" OFF)
+option(freetype-gl_WITH_GLAD "Use the GLAD gl loader" ON)
 option(freetype-gl_USE_VAO "Use a VAO to render a vertex_buffer instance (required for forward compatible OpenGL 3.0 contexts)" OFF)
-option(freetype-gl_BUILD_DEMOS "Build the freetype-gl example programs" ON)
-option(freetype-gl_BUILD_APIDOC "Build the freetype-gl API documentation" ON)
+option(freetype-gl_BUILD_DEMOS "Build the freetype-gl example programs" OFF)
+option(freetype-gl_BUILD_APIDOC "Build the freetype-gl API documentation" OFF)
 option(freetype-gl_BUILD_HARFBUZZ "Build the freetype-gl harfbuzz support (experimental)" OFF)
-option(freetype-gl_BUILD_MAKEFONT "Build the makefont tool" ON)
-option(freetype-gl_BUILD_TESTS "Build the tests" ON)
+option(freetype-gl_BUILD_MAKEFONT "Build the makefont tool" OFF)
+option(freetype-gl_BUILD_TESTS "Build the tests" OFF)
 option(freetype-gl_BUILD_SHARED "Build shared library" OFF)
 option(freetype-gl_OFF_SCREEN "Build for off-screen render (build libfreetype-gl.so only without GLX, demos must disable because of missing glfw)" OFF)
 
@@ -97,7 +97,7 @@ if(freetype-gl_OFF_SCREEN)
 else()
     find_package(OpenGL REQUIRED)
 endif()
-find_package(Freetype REQUIRED)
+#find_package(Freetype REQUIRED)
 
 if(freetype-gl_WITH_GLEW)
     set(FREETYPE_GL_USE_GLEW 1)
